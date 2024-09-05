@@ -20,7 +20,7 @@ const populateUser = (query: any) =>
 export async function addImage({ image, userId, path }: AddImageParams) {
 	try {
 		await connectToDatabase();
-
+        console.log(userId)
 		const author = await User.findById(userId);
 
 		if (!author) {

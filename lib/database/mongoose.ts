@@ -10,6 +10,7 @@ interface MongooseConnection {
 let cached: MongooseConnection = (global as any).mongoose;
 
 if (!cached) {
+	console.log("enrtered");
 	cached = (global as any).mongoose = {
 		conn: null,
 		promise: null,

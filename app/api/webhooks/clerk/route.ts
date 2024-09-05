@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 		});
 	}
 
-	// Get the body
+	// Get the body from event trigerred
 	const payload = await req.json();
 	const body = JSON.stringify(payload);
 
@@ -51,14 +51,16 @@ export async function POST(req: Request) {
 		});
 	}
 
-	// Get the ID and type
+	// Get the ID and type of event trigerred
 	const { id } = evt.data;
 	const eventType = evt.type;
 
 	// CREATE
 	if (eventType === 'user.created') {
+		//getting user data from evt.data
 		const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
+		//creating new user with data
 		const user: CreateUserParams = {
 			clerkId: id,
 			email: email_addresses[0].email_address,
